@@ -25,7 +25,7 @@ class BookController{
 
     async findById(request: Request, response: Response): Promise<Response>{
         try{
-            const result = await findBookByIdUseCase.execute(request.body.id)
+            const result = await findBookByIdUseCase.execute(request.params.id)
 
             return response.status(201).send(result)
         }catch(error){
@@ -35,7 +35,6 @@ class BookController{
 
     async update(request: Request, response: Response): Promise<Response>{
         try{
-            console.log(request.body)
             const result = await updateBookUseCase.execute(request.body)
             
             return response.status(201).send(result)
@@ -46,7 +45,7 @@ class BookController{
 
     async delete(request: Request, response: Response): Promise<Response>{
         try{
-            const result = await deleteBookUseCase.execute(request.body.id)
+            const result = await deleteBookUseCase.execute(request.params.id)
             
             return response.status(201).send(result)
         }catch(error){
